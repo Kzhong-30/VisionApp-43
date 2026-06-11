@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite
+*.sqlite3
+.DS_Store
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+generate_main.py
+test.py
+garbage_classifier.db
