@@ -79,6 +79,15 @@ def seed_data(db: Session):
         UserModel(username="地球卫士", points=980, total_classifications=130, correct_classifications=110),
         UserModel(username="低碳生活家", points=650, total_classifications=90, correct_classifications=75),
     ]
+    for idx, u in enumerate(seed_users):
+        if u.correct_classifications > u.total_classifications:
+            raise ValueError(
+                f"种子用户 {u.username} 数据错误: correct_classifications({u.correct_classifications}) > total_classifications({u.total_classifications})"
+            )
+        if u.total_classifications < 0 or u.correct_classifications < 0:
+            raise ValueError(
+                f"种子用户 {u.username} 数据错误: 分类数不能为负数"
+            )
     db.add_all(seed_users)
     db.commit()
 
